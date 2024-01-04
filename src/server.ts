@@ -21,9 +21,24 @@ const startServer = async (app: express.Express) => {
   app.get('/stations/list-stations', async (req, res)=> {
 
     const stations = await Station.find();
+    Station.create({
+      stationName: 'cubao',
+      coordinates: [10,10],
+      stationDisplay: 'CUbao'
+    })
     console.log("stations", stations)
     res.status(200).send(stations)
   })
+  app.get('/stations/create-cubao', async (req, res)=> {
+
+    const cubaoStation = await Station.create({
+      stationName: 'cubao',
+      coordinates: [10,10],
+      stationDisplay: 'CUbao'
+    })
+    res.status(200).send(cubaoStation)
+  })
+
 
   app.get('/stations/get/:id', (req, res)=> {
     const id = req.params['id'];

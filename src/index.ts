@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 5000
 
 import * as mongoose from 'mongoose';
 import { establishConnection } from './db';
+import userRoutes from './user';
 //import startServer from 'server';
 
 //App Varaibles 
@@ -22,4 +23,5 @@ app.use(express.json())
 establishConnection().then((connection)=>{
   console.log("established db connection")
   startServer(app);
+  userRoutes(app);
 })

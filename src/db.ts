@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { StationSchema } from "./schema/StationSchema";
 import * as dotenv from 'dotenv';
+import { UserSchema } from "./schema/UserSchema";
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI || "";
@@ -15,3 +16,4 @@ export const establishConnection = async () => {
 }
 
 export const Station = mongoose.model('Station', StationSchema, 'station');
+export const User = mongoose.model('User', UserSchema, 'user');
